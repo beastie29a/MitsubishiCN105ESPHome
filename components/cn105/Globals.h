@@ -89,10 +89,10 @@ static const char* TIMER_MODE_MAP[4] = { "NONE", "OFF", "ON", "BOTH" };
 static const uint8_t STAGE[7] = { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06 };
 static const char* STAGE_MAP[7] = { "IDLE", "LOW", "GENTLE", "MEDIUM", "MODERATE", "HIGH", "DIFFUSE" };
 
-static const uint8_t SUB_MODE[4] = { 0x00, 0x02, 0x04, 0x08 };
-static const char* SUB_MODE_MAP[4] = { "NORMAL", "DEFROST", "PREHEAT", "STANDBY" };
-static const uint8_t AUTO_SUB_MODE[4] = { 0x00, 0x01, 0x02, 0x03 };
-static const char* AUTO_SUB_MODE_MAP[4] = { "AUTO_OFF","AUTO_COOL", "AUTO_HEAT", "AUTO_LEADER" };
+static const uint8_t SUB_MODE[5] = { 0x00, 0x02, 0x04, 0x08, 0x10 };
+static const char* SUB_MODE_MAP[5] = { "NORMAL", "DEFROST", "PREHEAT", "STANDBY", "UNKNOWN_SUBMODE" };
+static const uint8_t AUTO_SUB_MODE[5] = { 0x00, 0x01, 0x02, 0x03, 0x40 };
+static const char* AUTO_SUB_MODE_MAP[5] = { "AUTO_OFF","AUTO_COOL", "AUTO_HEAT", "AUTO_LEADER", "UNKNOWN_AUTO_SUB" };
 
 static const int TIMER_INCREMENT_MINUTES = 10;
 
