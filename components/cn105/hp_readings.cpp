@@ -202,10 +202,8 @@ void CN105Climate::getSettingsFromResponsePacket() {
 
 
     this->wideVaneAdj = (data[10] & 0xF0) == 0x80 ? true : false;
-    if (this->wideVaneAdj) {
-        receivedSettings.wideVane = lookupByteMapValue(WIDEVANE_MAP, WIDEVANE, 7, data[10] & 0x0F, "wideVane reading", WIDEVANE_MAP[2]);
-    }
-
+    receivedSettings.wideVane = lookupByteMapValue(WIDEVANE_MAP, WIDEVANE, 7, data[10] & 0x0F, "wideVane reading");
+    ESP_LOGD("Decoder", "[wideVane: %s (adj:%d)]", receivedSettings.wideVane, this->wideVaneAdj);
     /*if ((data[10] != 0) && (this->traits_.supports_swing_mode(climate::CLIMATE_SWING_HORIZONTAL))) {    // wideVane is not always supported
         receivedSettings.wideVane = lookupByteMapValue(WIDEVANE_MAP, WIDEVANE, 7, data[10] & 0x0F, "wideVane reading");
         wideVaneAdj = (data[10] & 0xF0) == 0x80 ? true : false;
@@ -473,7 +471,7 @@ void CN105Climate::statusChanged(heatpumpStatus status) {
 }
 
 
-void CN105Climate::publishStateToHA(heatpumpSettings settings) {
+void CN105Climate::publishStateToHA(heatpumpSettings& settings) {
 
     if ((this->wantedSettings.mode == nullptr) && (this->wantedSettings.power == nullptr)) {        // to prevent overwriting a user demand
         checkPowerAndModeSettings(settings);
@@ -508,7 +506,7 @@ void CN105Climate::publishStateToHA(heatpumpSettings settings) {
 }
 
 
-void CN105Climate::heatpumpUpdate(heatpumpSettings settings) {
+void CN105Climate::heatpumpUpdate(heatpumpSettings& settings) {
     // settings correponds to current settings
     ESP_LOGV(LOG_SETTINGS_TAG, "Settings received");
 
