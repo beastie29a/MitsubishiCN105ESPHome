@@ -6,8 +6,8 @@
 #include "Arduino.h"
 #endif
 
-#define CUSTOM_MILLIS ::millis()
-#define CUSTOM_DELAY(x) ::delay(x)
+#define CUSTOM_MILLIS esphome::millis()
+#define CUSTOM_DELAY(x) esphome::delay(x)
 
 #define MAX_DATA_BYTES     64         // max number of data bytes in incoming messages
 #define MAX_DELAY_RESPONSE_FACTOR 10  // update_interval*10 seconds max without response
@@ -16,6 +16,8 @@
 
 static const char* LOG_ACTION_EVT_TAG = "EVT_SETS";
 static const char* TAG = "CN105"; // Logging tag
+static const char* LOG_REMOTE_TEMP = "REMOTE_TEMP"; // Logging tag
+static const char* LOG_ACK = "ACK"; // Logging tag
 static const char* LOG_SETTINGS_TAG = "SETTINGS";   // Logging settings changes
 static const char* LOG_STATUS_TAG = "STATUS";       // Logging status changes
 static const char* LOG_CYCLE_TAG = "CYCLE";         // loop cycles logs

@@ -1,6 +1,6 @@
 #include "cn105.h"
 
-
+using namespace esphome;
 
 /**
  * This method is call by the esphome framework to initialize the component
@@ -63,10 +63,4 @@ void CN105Climate::set_update_interval(uint32_t update_interval) {
 
     this->update_interval_ = update_interval;
     this->autoUpdate = (update_interval != 0);
-}
-
-void CN105Climate::set_remote_temperature(float setting) {
-    this->shouldSendExternalTemperature_ = true;
-    this->remoteTemperature_ = setting;
-    ESP_LOGD(LOG_SETTINGS_TAG, "setting remote temperature to %f", this->remoteTemperature_);
 }

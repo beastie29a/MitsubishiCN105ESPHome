@@ -58,7 +58,7 @@ void CN105Climate::set_baud_rate(int baud) {
     ESP_LOGI(TAG, "setting baud rate to: %d", baud);
 }
 
-void CN105Climate::set_tx_rx_pins(uint8_t tx_pin, uint8_t rx_pin) {
+void CN105Climate::set_tx_rx_pins(int tx_pin, int rx_pin) {
     this->tx_pin_ = tx_pin;
     this->rx_pin_ = rx_pin;
     ESP_LOGI(TAG, "setting tx_pin: %d rx_pin: %d", tx_pin, rx_pin);
@@ -110,7 +110,6 @@ bool CN105Climate::is_operating() {
 // SERIAL_8E1
 void CN105Climate::setupUART() {
 
-    //ESP_LOGI(TAG, "setupUART() with baudrate %lu", this->parent_->get_baud_rate());
     log_info_uint32(TAG, "setupUART() with baudrate ", this->parent_->get_baud_rate());
     this->setHeatpumpConnected(false);
     this->isUARTConnected_ = false;
